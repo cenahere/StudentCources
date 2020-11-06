@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BusinessLayer.Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div style="padding:150px;">
+    <h1>Index</h1>
+
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseItem)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <img src="~/img/Course/@item.CourseItem" class="img-thumbnail" style="width:60px;height:60px;"  />
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a> |
+                        <a asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-eye"></i></a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
